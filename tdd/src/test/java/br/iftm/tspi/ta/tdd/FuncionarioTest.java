@@ -15,6 +15,11 @@ public class FuncionarioTest {
         funcionario = new Funcionario();
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com horas trabalhadas válidas fora do limite</p>
+     * <p><b>Entrada:</b> 30 </p>
+     * <p><b>Saída esperada:</b> 30 </p>
+     */
     @Test
     @DisplayName("Caso de teste que verifica a quantidade de horas trabalhadas validas")
     public void testarConstrutorComHorasTrabalhadasValidasForaDoLimite() {
@@ -30,6 +35,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, resultadoObtido);
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com horas trabalhadas válidas no limite inferior</p>
+     * <p><b>Entrada:</b> 20 </p>
+     * <p><b>Saída esperada:</b> 20 </p>
+     */
     @Test
     @DisplayName("Caso de teste que verifica a quantidade de horas trabalhadas validas no limite inferior")
     public void testarConstrutorComHorasTrabalhadasValidasNoLimiteInferior() {
@@ -45,6 +55,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, resultadoObtido);
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com horas trabalhadas válidas no limite superior</p>
+     * <p><b>Entrada:</b> 40 </p>
+     * <p><b>Saída esperada:</b> 40 </p>
+     */
     @Test
     @DisplayName("Caso de teste que verifica a quantidade de horas trabalhadas validas no limite superior")
     public void testarConstrutorComHorasTrabalhadasValidasNoLimiteSuperior() {
@@ -60,8 +75,13 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, resultadoObtido);
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com horas trabalhadas inválida</p>
+     * <p><b>Entrada:</b> 7 </p>
+     * <p><b>Saída esperada:</b> "O funcionário deve trabalhar entre 20 e 40 horas." </p>
+     */
     @Test
-    @DisplayName("Caso de teste que verifica a quantidade de horas trabalhadas validas no limite superior")
+    @DisplayName("Caso de teste que verifica a quantidade de horas trabalhadas inválida")
     public void testarConstrutorComHorasTrabalhadasInvalidas() {
         //arrange
         int entradaInvalida = 7;
@@ -75,6 +95,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, ex.getMessage());
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com valor das horas trabalhadas fora do limite</p>
+     * <p><b>Entrada:</b> 90.08 </p>
+     * <p><b>Saída esperada:</b> 90.08 </p>
+     */
     @Test
     @DisplayName("Caso de teste que verifica o valor da hora trabalhada fora do limite")
     public void testarContrutorComValorHoraValidoForaDoLimite() {
@@ -90,6 +115,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, resultadoObtido);
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com valor das horas trabalhadas no limite superior</p>
+     * <p><b>Entrada:</b> 151.80 </p>
+     * <p><b>Saída esperada:</b> 151.80 </p>
+     */
     @Test
     @DisplayName("Caso de teste que verifica o valor da hora trabalhada no limite superior")
     public void testarContrutorComValorHoraValidoNoLimiteSuperior() {
@@ -105,6 +135,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, resultadoObtido);
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o construtor com valor das horas trabalhadas inválida</p>
+     * <p><b>Entrada:</b> 170 </p>
+     * <p><b>Saída esperada:</b> "O valor da hora trabalhada não pode ser inferior a 1% e nem superior a 10% do salário mínimo" </p>
+     */
     @Test
     @DisplayName("Caso de teste que verifica o valor da hora trabalhada inválida")
     public void testarContrutorComValorHoraInvalido() {
@@ -120,6 +155,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, ex.getMessage());
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o cálculo do pagamento</p>
+     * <p><b>Entradas:</b> horasTrabalhadas = 170 ; valorHora: 90.08</p>
+     * <p><b>Saída esperada:</b> 10809.60 </p>
+     */
     @Test
     @DisplayName("Caso teste que verifica o cálculo do pagamento.")
     public void testarOCalculoDoPagamento() {
@@ -136,6 +176,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, resultadoObtido);
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o cálculo do pagamento acima de R$ 15.000</p>
+     * <p><b>Entradas:</b> horasTrabalhadas = 40 ; valorHora: 136.62</p>
+     * <p><b>Saída esperada:</b> "O pagamento não pode ultrapassar R$ 15.000,00" </p>
+     */
     @Test
     @DisplayName("Caso teste que verifica o valor de pagamento acima de R$ 15.000")
     public void testarOCalculoDoPagamentoAcimaDoLimite () {
@@ -152,6 +197,11 @@ public class FuncionarioTest {
         assertEquals(resultadoEsperado, ex.getMessage());
     }
 
+    /**
+     * <p><b>Cenário:</b> Testa o cálculo do pagamento abaixo de R$ 1518</p>
+     * <p><b>Entradas:</b> horasTrabalhadas = 20 ; valorHora: 15.18</p>
+     * <p><b>Saída esperada:</b> "O pagamento não pode ser menor que 1 salário mínimo" </p>
+     */
     @Test
     @DisplayName("Caso teste que verifica o valor de pagamento abaixo de R$ 1518,00")
     public void testarOCalculoDoPagamentoAbaixoDoLimite () {
