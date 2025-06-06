@@ -1,5 +1,6 @@
 package com.example.atividadea4.services;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -40,7 +41,17 @@ public class ClientService {
 		Client entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new ClientDTO(entity);
 	}
-	
+
+	@Transactional(readOnly = true)
+	public List<ClientDTO> findByIncome(Double income) {
+		List<Client> obj = repository.findByIncomeGreaterThan(income);
+		if (obj.isEmpty()) {
+			throw new ResourceNotFoundException("Entity not found");
+		}
+		//retornar uma lista de clientes com renda maior que o valor informado
+		return obj.stream().map(x -> new ClientDTO(x)).toList();
+	}
+
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
 		Client entity = dto.toEntity();
